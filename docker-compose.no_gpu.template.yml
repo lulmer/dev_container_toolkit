@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  "python_debian_{{UUID}}":
+    image: ${CONTAINER_BASENAME}_image
+    container_name: ${CONTAINER_BASENAME}_{{UUID}}
+    build:
+      context: ..
+      dockerfile: .devcontainer/dev.gpu.Dockerfile
+      args:
+        PYTHON_VERSION: $PYTHON_VERSION
+        DEBIAN_DISTRIB: $DEBIAN_DISTRIB
+        POETRY_VERSION: $POETRY_VERSION
+    volumes:
+      - ..:/workspaces:cached
+      - $CACHE_FOLDER:/home/vscode/.cache
+      - $HOME/.ssh/authorized_keys:/home/vscode/.ssh/authorized_keys
+      - $HOME/.ssh/id_rsa:/home/vscode/.ssh/id_rsa
+      - $HOME/.ssh/id_rsa.pub:/home/vscode/.ssh/id_rsa.pub
+    ulimits:
+      memlock: -1
+    network_mode: host

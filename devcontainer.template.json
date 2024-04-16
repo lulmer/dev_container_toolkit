@@ -1,0 +1,19 @@
+{
+	"name": "{{CONTAINER_BASENAME}}",
+	"dockerComposeFile": "./docker-compose.yml",
+	"service": "python_debian_{{UUID}}",
+	"workspaceFolder": "/workspaces",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-python.python",
+				"ms-python.debugpy",
+				"charliermarsh.ruff"
+			]
+		}
+	},
+	"features": {
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {}
+	},
+	"overrideCommand": true
+}
