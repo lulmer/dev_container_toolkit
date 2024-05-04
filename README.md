@@ -15,7 +15,7 @@ Embark on a journey of seamless Python development! Our containerized setup ensu
 0. **Check prerequisites**: Run the commands in the `Docker configuration check` Section
 1. **Clone and Setup**: Clone this repo and dive into the `.devcontainer` folder.
     ```shell
-    git clone https://gitlab.agora-factory.thalesgroup.com/tsn-i-ia-labege-ad-ad3-ia/devcontainer.git .devcontainer
+    git clone https://github.com/lulmer/dev_container_toolkit.git .devcontainer
 
     ```
 
