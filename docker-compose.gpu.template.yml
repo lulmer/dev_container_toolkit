@@ -6,7 +6,7 @@ services:
     container_name: ${CONTAINER_BASENAME}_{{UUID}}
     build:
       context: ..
-      dockerfile: .devcontainer/dev.Dockerfile
+      dockerfile: .devcontainer/dev.gpu.Dockerfile
       args:
         PYTHON_VERSION: $PYTHON_VERSION
         DEBIAN_DISTRIB: $DEBIAN_DISTRIB
