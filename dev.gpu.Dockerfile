@@ -4,15 +4,15 @@ ARG DEBIAN_DISTRIB
 FROM mcr.microsoft.com/devcontainers/python:${PYTHON_VERSION}-${DEBIAN_DISTRIB} AS dev-base
 
 # From Ubuntu -> Debian. Let's pray...
-COPY --from=nvcr.io/nvidia/cuda:12.2.2-devel-ubuntu22.04 /usr/local/cuda /usr/local/cuda
-COPY --from=nvcr.io/nvidia/cuda:12.2.2-devel-ubuntu22.04 /usr/local/cuda-12 /usr/local/cuda-12
-COPY --from=nvcr.io/nvidia/cuda:12.2.2-devel-ubuntu22.04 /usr/local/cuda-12.2 /usr/local/cuda-12.2
+COPY --from=nvcr.io/nvidia/cuda-dl-base:24.09-cuda12.6-devel-ubuntu22.04 /usr/local/cuda-12.6 /usr/local/cuda-12.6
+RUN ln -s /usr/local/cuda-12.6 /usr/local/cuda
+RUN ln -s /usr/local/cuda-12.6 /usr/local/cuda-12
 
 # Set the environment variables for CUDA
 ENV PATH="/usr/local/cuda/bin:${PATH}"
-ENV CUDA_HOME="/usr/local/cuda-12.2"
+ENV CUDA_HOME="/usr/local/cuda-12.6"
 ENV LD_LIBRARY_PATH="/usr/local/cuda/lib64:${LD_LIBRARY_PATH}"
-ENV NCCL_SOCKET_IFNAME=eth0
+ENV NCCL_SOCKET_IFNAME=${NCCL_SOCKET_IFNAME}
 
 RUN rm -rf /etc/apt/sources.list.d/yarn.list
 
